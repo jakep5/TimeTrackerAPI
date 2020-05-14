@@ -48,7 +48,7 @@ usersRouter
                             date_created: 'now()',
                         }
 
-                        return UsersService.putUserInDb(
+                        return UsersService.putUserIntoDb(
                             req.app.get('db'),
                             newUser
                         )
