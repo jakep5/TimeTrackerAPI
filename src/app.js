@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 
 const userRouter = require('./users/users-router');
+const authRouter = require('./auth/auth-router');
 
 const app = express();
 
@@ -17,7 +18,8 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-app.use('/users', userRouter)
+app.use('/users', userRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello, boilerplate!')
