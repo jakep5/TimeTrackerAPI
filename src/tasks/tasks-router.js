@@ -40,4 +40,30 @@ tasksRouter
             })
     })
 
+    /*Get User's Games*/
+    .get((req, res, next) => {
+        TaskService.getUserTasks(
+            req.app.get('db'),
+            req.headers.user_id
+        )
+        .then(tasks => {
+            res.json(tasks.map(TaskService.serializeTask));
+        })
+        .catch(next);
+    })
+
+
+/*Individual game operations */
+tasksRouter 
+    .route('/id/:taskId')
+
+    /*Delete a user's task */
+    .delete((req, res, next) => {
+        TaskService.deleteTask(
+            req.app.get('db'),
+            req.params.taskId
+        )
+            .then(res.status(204))
+    })
+
 module.exports = tasksRouter

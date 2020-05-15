@@ -20,6 +20,29 @@ const TaskService = {
             priority: xss(task.priority),
             user_id: task.user_id
         }
+    },
+
+    getAllTasks(db) {
+        return db
+            .from('timetracker_tasks AS task')
+            .select(
+                'task.id',
+                'task.name',
+                'task.hours',
+                'task.priority'
+            )
+    },
+
+    getUserTasks(db, userId) {
+        return TaskService.getAllTasks(db)
+        .where('user_id', userId)
+    },
+
+    deleteTask(db, id) {
+        return db
+            .from('timetracker_tasks')
+            .where({id})
+            .delete()
     }
 }
 
