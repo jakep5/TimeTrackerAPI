@@ -66,4 +66,14 @@ tasksRouter
             .then(res.status(204))
     })
 
+    /*Edit task properties */
+    .patch(jsonBodyParser, (req, res, next) => {
+        TaskService.editTask(
+            req.app.get('db'),
+            req.params.taskId,
+            req.body
+        )
+    })
+
+
 module.exports = tasksRouter

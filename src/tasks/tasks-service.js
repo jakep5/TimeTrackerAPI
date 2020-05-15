@@ -43,6 +43,17 @@ const TaskService = {
             .from('timetracker_tasks')
             .where({id})
             .delete()
+    },
+
+    editTask(db, id, task) {
+        return db
+            .from('timetracker_tasks')
+            .where({ id })
+            .update({
+                name: task.name,
+                hours: task.hours,
+                priority: task.priority
+            })
     }
 }
 
