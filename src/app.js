@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config');
 
 const userRouter = require('./users/users-router');
 const authRouter = require('./auth/auth-router');
+const taskRouter = require('./tasks/tasks-router');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cors());
 
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
+app.use('/tasks', taskRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello, boilerplate!')
