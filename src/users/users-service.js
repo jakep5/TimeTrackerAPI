@@ -7,7 +7,7 @@ const UsersService = {
     putUserIntoDb(db, newUser) {
         return db
             .insert(newUser)
-            .into('TimeTracker_users')
+            .into('timetracker_users')
             .returning('*')
             .then(([user]) => user)
     },
@@ -17,7 +17,7 @@ const UsersService = {
     },
 
     getUserWithUserName(db, user_name) {
-        return db('TimeTracker_users')
+        return db('timetracker_users')
             .where({ user_name })
             .first()
             .then(user => !!user)

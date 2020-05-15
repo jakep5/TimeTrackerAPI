@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS TimeTracker_users;
+DROP TABLE IF EXISTS timetracker_users;
