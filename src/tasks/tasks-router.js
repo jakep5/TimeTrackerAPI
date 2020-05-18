@@ -8,10 +8,11 @@ const tasksRouter = express.Router();
 
 const jsonBodyParser = express.json();
 
-/* tasksRouter.all(requireAuthentication.requireAuthentication) */
+
 
 tasksRouter
     .route('/')
+    .all(requireAuthentication)
     .post(jsonBodyParser, (req, res, next) => {
         const newTask = {
             name: req.body.name,
@@ -53,10 +54,10 @@ tasksRouter
     })
 
 
-/*Individual game operations */
+/*Individual task operations */
 tasksRouter 
     .route('/id/:taskId')
-
+    .all(requireAuthentication)
     /*Delete a user's task */
     .delete((req, res, next) => {
         TaskService.deleteTask(
@@ -73,7 +74,19 @@ tasksRouter
             req.params.taskId,
             req.body
         )
+            .then(res.status(204))
     })
 
+tasksRouter
+    .route('/search')
+    .all(requireAuthentication)
+    /*Get task by name (search)*/
+    .get((req, res, next) => {
+        TaskService.getByName(
+            req.app.get('db'),
+            req.query.name
+        )
+            .then(res.status(201))
+    })
 
 module.exports = tasksRouter

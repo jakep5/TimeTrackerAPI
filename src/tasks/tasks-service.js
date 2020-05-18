@@ -54,6 +54,10 @@ const TaskService = {
                 hours: task.hours,
                 priority: task.priority
             })
+    },
+
+    getByName(db, name) {
+        console.log(name);
     }
 }
 
