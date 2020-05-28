@@ -2,7 +2,6 @@ const xss = require('xss');
 
 const TaskService = {
     insertTaskIntoDb(db, task) {
-        console.log('here');
         return db
             .insert(task)
             .into('timetracker_tasks')
@@ -57,7 +56,6 @@ const TaskService = {
     },
 
     getByName(db, name) {
-        console.log(name);
     }
 }
 
