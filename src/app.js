@@ -23,10 +23,6 @@ app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/tasks', taskRouter);
 
-app.get('/', (req, res) => {
-    res.send('Hello, boilerplate!')
-});
-
 app.use(function errorHandler(error, req, res, next) {
     let response
     if (NODE_ENV === 'production') {
