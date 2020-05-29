@@ -19,6 +19,12 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200"); 
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/tasks', taskRouter);
