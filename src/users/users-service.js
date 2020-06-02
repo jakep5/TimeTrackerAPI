@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const REGEX = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/
 
 const UsersService = {
+
     putUserIntoDb(db, newUser) {
         return db
             .insert(newUser)
@@ -16,6 +17,7 @@ const UsersService = {
         return bcrypt.hash(password, 12)
     },
 
+    //see if user with passed username exists in database
     getUserWithUserName(db, user_name) {
         return db('timetracker_users')
             .where({ user_name })

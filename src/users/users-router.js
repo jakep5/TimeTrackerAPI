@@ -9,7 +9,6 @@ const usersRouter = express.Router();
 const jsonBodyParser = express.json();
 
 /**Create User */
-
 usersRouter
     .route('/')
     .post(jsonBodyParser, (req, res, next) => {
