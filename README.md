@@ -35,3 +35,52 @@ Posts a task to the database with information passed in the request body. The us
   "user_id": 1
 }
 ```
+
+## PATCH - Task
+
+### Base URL + '/tasks/id/:taskId'
+
+Edits/updates a tasks' information that corresponds to the task ID number passed as a request parameter. PATCH request body format is as follows:
+
+```json
+{
+  "name": "New name",
+  "hours": 40,
+  "priority": "low"
+}
+```
+
+## DELETE - Task
+
+### Base URL + '/tasks/id/:taskId'
+
+Deletes a task from the database that corresponds to the provided taskId. TaskID number is passed as a request parameter.
+
+## POST - User (user creation)
+
+### Base URL + '/users'
+
+Registers a new user in the database. Assigned a unique userId number upon user creation.
+
+Example user creation request body:
+```json
+{
+  "user_name": "testuser",
+  "password": "*Testtest123"
+}
+```
+
+## POST - User (user login)
+
+### Base URL + '/users'
+
+Validates the provided username and password, attempts to match with a created user in the database. Input password is compared with hashed passwords in the database. If comparison is successful, JWT is created and stored in the user's session storage.
+
+Example POST request body for user login:
+```json
+{
+  "user_name": "testuser",
+  "password": "*Testtest123"
+}
+```
+
